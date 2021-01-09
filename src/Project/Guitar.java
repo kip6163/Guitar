@@ -23,12 +23,18 @@ import javax.swing.*;
 import java.io.File;
 import java.util.*;
 
+/**
+ * The Guitar class takes all the information given to it from the UserInterface class and creates a personalized
+ * fretboard for the user to try out different scales.
+ *
+ * @author Kaleb Pendleton
+ */
 public class Guitar {
 
-    private final List<GuitarString> strings;
-    private String key;
-    private final HashMap<String, List<String>> scaleMap;
-    private boolean sound;
+    private final List<GuitarString> strings;   //the guitar as a list of guitar strings
+    private String key;     //key of the scale that is currently being displayed
+    private final HashMap<String, List<String>> scaleMap;   //dictionary for accessing scales
+    private final boolean sound;  //sound only works on preset configs right now
 
 
     public Guitar(List<GuitarString> strings, boolean sound){
@@ -330,8 +336,6 @@ public class Guitar {
         lowerHalf.getChildren().add(infoBoxBox);
 
 
-
-
         mainBox.getChildren().add(lowerHalf);
         Scene scene = new Scene(mainBox);
         subStage.setScene(scene);
@@ -339,51 +343,34 @@ public class Guitar {
     }
 
 
-
-
+    /**
+     * retrieves an image to display what a guitar string is tuned to.
+     * @param note the first note in the list that represents a guitar string
+     * @return location of the image
+     */
     public String imageKeyFinder(String note){
-        String url = "";
-        switch(note){
-            case "A":
-                url = "images/A.png";
-                break;
-            case "A#":
-                url = "images/ABb.png";
-                break;
-            case "B":
-                url = "images/B.png";
-                break;
-            case "C":
-                url = "images/C.png";
-                break;
-            case "C#":
-                url = "images/CDb.png";
-                break;
-            case "D":
-                url = "images/D.png";
-                break;
-            case "D#":
-                url = "images/DEb.png";
-                break;
-            case "E":
-                url = "images/E.png";
-                break;
-            case "F":
-                url = "images/F.png";
-                break;
-            case "F#":
-                url = "images/FGb.png";
-                break;
-            case "G":
-                url = "images/G.png";
-                break;
-            case "G#":
-                url = "images/GAb.png";
-                break;
-        }
+        String url = switch (note) {
+            case "A" -> "images/A.png";
+            case "A#" -> "images/ABb.png";
+            case "B" -> "images/B.png";
+            case "C" -> "images/C.png";
+            case "C#" -> "images/CDb.png";
+            case "D" -> "images/D.png";
+            case "D#" -> "images/DEb.png";
+            case "E" -> "images/E.png";
+            case "F" -> "images/F.png";
+            case "F#" -> "images/FGb.png";
+            case "G" -> "images/G.png";
+            case "G#" -> "images/GAb.png";
+            default -> "";
+        };
         return url;
     }
 
+    /**
+     * uses the global key variable and a scale to change the marked notes on the fretboard of the guitar.
+     * @param scale current selected scale
+     */
     public void scaleMarker(List<String> scale){
         HashSet<String> scaleNotes = new HashSet<>();
         int i = 0;
@@ -407,6 +394,10 @@ public class Guitar {
         }
     }
 
+    /**
+     * creates a list of notes
+     * @return list of valid notes
+     */
     public List<String> noteList(){
         List<String> blah = new ArrayList<>();
         blah.add("A");
@@ -424,6 +415,10 @@ public class Guitar {
         return blah;
     }
 
+    /**
+     * combo box for selecting the scale
+     * @return combo box with scales in it
+     */
     public ComboBox boxCreator(){
         ComboBox box = new ComboBox();
         box.getItems().add("major");
@@ -440,6 +435,10 @@ public class Guitar {
         return box;
     }
 
+    /**
+     * plays an audio file for a note when it is clicked on.
+     * @param path path to an audio file
+     */
     public void retrieveStream(String path){
 
         try{

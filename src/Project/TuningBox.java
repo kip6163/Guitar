@@ -16,7 +16,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-
+/**
+ * Windows for the user to enter the tunings of each string on their guitar if they aren't using a preset
+ * tuning configuration.
+ *
+ * @author Kaleb Pendleton
+ */
 public class TuningBox {
 
     public TuningBox(int stringNum, UserInterface ui){

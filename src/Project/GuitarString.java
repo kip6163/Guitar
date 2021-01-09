@@ -5,12 +5,22 @@ import javafx.scene.layout.HBox;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The GuitarString class is a representation of a guitar string, it is a list of notes.
+ *
+ * @author Kaleb Pendleton
+ */
 public class GuitarString {
 
-    private List<Note> notes;
-    private Note key;
+    private List<Note> notes;   //list of notes that represents a guitar string
+    private Note key;   //may use this later for a getter
     private HBox stringBox;
 
+    /**
+     * GuitarString constructor takes a note and creates a list of notes from that note that
+     * represents a guitar string with each index of the list being a fret that has its own note.
+     * @param key the note that the string is tuned to
+     */
     public GuitarString(Note key){
         this.key = key;
         this.notes = new ArrayList<>(25);
@@ -40,6 +50,10 @@ public class GuitarString {
         }
     }
 
+    /**
+     * function used in guitar strings constructor for creating the other 24 notes.
+     * @return ordered arraylist of each string note representation
+     */
     public ArrayList<String> getBasicNotes(){
         ArrayList<String> basicNotes = new ArrayList<>(12);
         basicNotes.add("A");

@@ -11,6 +11,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
+/**
+ * Informational windows that is available once a guitar has been setup, basically explains what
+ * the purpose of the program is.
+ *
+ * @author Kaleb Pendleton
+ */
 public class InfoBoxPopUp {
 
     public InfoBoxPopUp(){

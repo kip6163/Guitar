@@ -12,6 +12,12 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * ErrorBox class is used to create a pop up window indicating that the user has done something wrong and needs to
+ * try inputting something else. As of right now this can only show up through the alternative tuning menu.
+ *
+ * @author Kaleb Pendleton
+ */
 public class ErrorBox {
 
     public ErrorBox(String errorMessage) {

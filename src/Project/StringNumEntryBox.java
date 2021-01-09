@@ -13,6 +13,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * The StringNumEntryBox is the window that pops up when you choose an alternative tuning, this window
+ * asks the user how many strings their guitar has.
+ *
+ * @author Kaleb Pendleton
+ */
 public class StringNumEntryBox {
 
     public StringNumEntryBox(UserInterface ui){
@@ -37,7 +43,7 @@ public class StringNumEntryBox {
                     int stringNum = Integer.parseInt(stringNumAsString);
                     if(stringNum < 1 || stringNum > 20){
                         ErrorBox box = new ErrorBox("Please enter a number between" + "\r\n" +
-                                " 1 and 50 for string count");
+                                " 1 and 20 for string count");
                     }
                     else{
                         subStage.close();

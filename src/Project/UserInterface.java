@@ -23,81 +23,70 @@ import java.util.List;
 
 public class UserInterface extends Application {
 
-    private static List<GuitarString> guitar;
-    private static int selection;
-    private Stage stage;
+    private static List<GuitarString> guitar; //list of guitar strings that represents a guitar
+    private static int selection; //int to indicate the selection a user has made in the menu
+    private Stage stage; //javafx stage, the config menu
 
     public static void main(String[] args){
         selection = 0;
         Application.launch();
     }
 
+    /**
+     * Creates a guitar based on the users selection if the user chooses a preset.
+     */
     public static void selectionFinder(){
+        ArrayList<GuitarString> strings = new ArrayList<>(6);
         switch(selection){
             case 1:
-                guitar = EStandard();
+                strings.add(new GuitarString(new Note("E",2)));
+                strings.add(new GuitarString(new Note("A",3)));
+                strings.add(new GuitarString(new Note("D",3)));
+                strings.add(new GuitarString(new Note("G",3)));
+                strings.add(new GuitarString(new Note("B",4)));
+                strings.add(new GuitarString(new Note("E",4)));
+                guitar = strings;
                 break;
 
             case 2:
-                guitar = DropD();
+                strings.add(new GuitarString(new Note("D",2)));
+                strings.add(new GuitarString(new Note("A",3)));
+                strings.add(new GuitarString(new Note("D",3)));
+                strings.add(new GuitarString(new Note("G",3)));
+                strings.add(new GuitarString(new Note("B",4)));
+                strings.add(new GuitarString(new Note("E",4)));
+                guitar = strings;
                 break;
 
             case 3:
-                guitar = DStandard();
+                strings.add(new GuitarString(new Note("D",2)));
+                strings.add(new GuitarString(new Note("G",2)));
+                strings.add(new GuitarString(new Note("C",3)));
+                strings.add(new GuitarString(new Note("F",3)));
+                strings.add(new GuitarString(new Note("A",4)));
+                strings.add(new GuitarString(new Note("D",4)));
+                guitar = strings;
                 break;
 
             case 4:
-                guitar = DropC();
+                strings.add(new GuitarString(new Note("C",2)));
+                strings.add(new GuitarString(new Note("G",2)));
+                strings.add(new GuitarString(new Note("C",3)));
+                strings.add(new GuitarString(new Note("F",3)));
+                strings.add(new GuitarString(new Note("A",4)));
+                strings.add(new GuitarString(new Note("D",4)));
+                guitar = strings;
                 break;
         }
     }
 
-    public static ArrayList<GuitarString> EStandard(){
-        ArrayList<GuitarString> strings = new ArrayList<>(6);
-        strings.add(new GuitarString(new Note("E",2)));
-        strings.add(new GuitarString(new Note("A",3)));
-        strings.add(new GuitarString(new Note("D",3)));
-        strings.add(new GuitarString(new Note("G",3)));
-        strings.add(new GuitarString(new Note("B",4)));
-        strings.add(new GuitarString(new Note("E",4)));
-        return strings;
-    }
-
-    public static ArrayList<GuitarString> DStandard(){
-        ArrayList<GuitarString> strings = new ArrayList<>(6);
-        strings.add(new GuitarString(new Note("D",2)));
-        strings.add(new GuitarString(new Note("G",2)));
-        strings.add(new GuitarString(new Note("C",3)));
-        strings.add(new GuitarString(new Note("F",3)));
-        strings.add(new GuitarString(new Note("A",4)));
-        strings.add(new GuitarString(new Note("D",4)));
-        return strings;
-    }
-
-    public static ArrayList<GuitarString> DropD(){
-        ArrayList<GuitarString> strings = new ArrayList<>(6);
-        strings.add(new GuitarString(new Note("D",2)));
-        strings.add(new GuitarString(new Note("A",3)));
-        strings.add(new GuitarString(new Note("D",3)));
-        strings.add(new GuitarString(new Note("G",3)));
-        strings.add(new GuitarString(new Note("B",4)));
-        strings.add(new GuitarString(new Note("E",4)));
-        return strings;
-    }
-
-    public static ArrayList<GuitarString> DropC(){
-        ArrayList<GuitarString> strings = new ArrayList<>(6);
-        strings.add(new GuitarString(new Note("C",2)));
-        strings.add(new GuitarString(new Note("G",2)));
-        strings.add(new GuitarString(new Note("C",3)));
-        strings.add(new GuitarString(new Note("F",3)));
-        strings.add(new GuitarString(new Note("A",4)));
-        strings.add(new GuitarString(new Note("D",4)));
-        return strings;
-    }
-
-
-
+    /**
+     * Start sets the javafx stage up, this creates a friendly GUI for the user to configure their
+     * guitars tuning so that the program can create a visual representation of their guitar.
+     *
+     * @param stage javafx stage for config menu
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
